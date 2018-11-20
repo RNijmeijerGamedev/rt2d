@@ -18,10 +18,14 @@ MyScene::MyScene() : Scene()
 	// the Sprite is added in Constructor of MyEntity.
 	myentity = new MyEntity();
 	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
+	myentity2 = new MyEntity();
+	myentity2->position = Point2(SWIDTH/4, SHEIGHT/4);
 
 	// create the scene 'tree'
 	// add myentity to this Scene as a child.
 	this->addChild(myentity);
+	this->addChild(myentity2);
+
 }
 
 
@@ -29,9 +33,11 @@ MyScene::~MyScene()
 {
 	// deconstruct and delete the Tree
 	this->removeChild(myentity);
+	this->removeChild(myentity2);
 
 	// delete myentity from the heap (there was a 'new' in the constructor)
 	delete myentity;
+	delete myentity2;
 }
 
 void MyScene::update(float deltaTime)
@@ -48,9 +54,11 @@ void MyScene::update(float deltaTime)
 	// ###############################################################
 	if (input()->getKeyDown(KeyCode::Space)) {
 		myentity->scale = Point(0.5f, 0.5f);
+		myentity2->scale = Point(2.0f, 2.0f);
 	}
 	if (input()->getKeyUp(KeyCode::Space)) {
 		myentity->scale = Point(1.0f, 1.0f);
+		myentity2->scale = Point(1.0f, 1.0f);
 	}
 
 	// ###############################################################
