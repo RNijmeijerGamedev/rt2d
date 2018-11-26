@@ -9,64 +9,60 @@
 
 #include "myscene.h"
 
-MyScene::MyScene() : Scene()
-{
-	// start the timer.
-	t.start();
-
-	// create a single instance of MyEntity in the middle of the screen.
-	// the Sprite is added in Constructor of MyEntity.
-	myentity = new MyEntity();
-	myentity->position = Point2(SWIDTH/2, SHEIGHT/2);
-	myentity2 = new MyEntity();
-	myentity2->position = Point2(SWIDTH/4, SHEIGHT/4);
-
-	// create the scene 'tree'
-	// add myentity to this Scene as a child.
-	this->addChild(myentity);
-	this->addChild(myentity2);
-
+MyScene::MyScene() : Scene() {
+    // grid settings
+    //text[0]->message("TEST TEST HELLO WORLD");
+    gridwidth = 24;
+    gridheight = 16;
+    cellwidth = 64;
+    cellheight = 64;
+    border = 1;
+    
+    // create grid
+    grid = new MyEntity();
+    int xgridpos = (SWIDTH/2) - (gridwidth*(cellwidth+border) / 2);
+    int ygridpos = (SHEIGHT/2) - (gridheight*(cellheight+border) /2);
+    grid->position = Point2(xgridpos, ygridpos);
+    // create cells
+    for (int x=0; x<gridheight; x++) {
+        for (int y=0; y<gridheight; y++) {
+            Cell* cell = new Cell();
+            cell->position.x = x;
+            cell->position.y = y;
+            
+            cell->entity = new MyEntity();
+            cell->entity->addSprite(AUTOGENWHITE);
+            cell->entity->sprite()->size.x = cellwidth;
+            cell->entity->sprite()->size.y = cellheight;
+            cell->entity->sprite()->color = GRAY;
+            
+            // initial position
+            cell->entity->position.x = x*(cellwidth+border);
+            cell->entity->position.y = y*(cellheight+border);
+            
+            cells.push_back(cell);
+            grid->addChild(cell->entity);
+            //layers[0]->addChild(grid);
+        }
+    }
 }
 
 
-MyScene::~MyScene()
-{
-	// deconstruct and delete the Tree
-	this->removeChild(myentity);
-	this->removeChild(myentity2);
-
-	// delete myentity from the heap (there was a 'new' in the constructor)
-	delete myentity;
-	delete myentity2;
+MyScene::~MyScene() {
+    
+    int s = cells.size();
+    for (int i=0; i<s; i++) {
+        //layers[0]->removeChild(cells[i]->entity);
+        delete cells[i]->entity;
+        delete cells[i];
+        cells[i] = NULL;
+    }
+    cells.clear();
+    
+    delete grid;
 }
 
-void MyScene::update(float deltaTime)
-{
-	// ###############################################################
-	// Escape key stops the Scene
-	// ###############################################################
-	if (input()->getKeyUp(KeyCode::Escape)) {
-		this->stop();
-	}
+void MyScene::update(float deltaTime) {
 
-	// ###############################################################
-	// Spacebar scales myentity
-	// ###############################################################
-	if (input()->getKeyDown(KeyCode::Space)) {
-		myentity->scale = Point(0.5f, 0.5f);
-		myentity2->scale = Point(2.0f, 2.0f);
-	}
-	if (input()->getKeyUp(KeyCode::Space)) {
-		myentity->scale = Point(1.0f, 1.0f);
-		myentity2->scale = Point(1.0f, 1.0f);
-	}
-
-	// ###############################################################
-	// Rotate color
-	// ###############################################################
-	if (t.seconds() > 0.0333f) {
-		RGBAColor color = myentity->sprite()->color;
-		myentity->sprite()->color = Color::rotate(color, 0.01f);
-		t.start();
-	}
 }
+

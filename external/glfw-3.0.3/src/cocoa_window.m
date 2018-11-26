@@ -23,7 +23,7 @@
 //    distribution.
 //
 //========================================================================
-
+#define GL_SILENCE_DEPRECATION 1
 #include "internal.h"
 
 // Needed for _NSGetProgname
@@ -234,13 +234,13 @@ static int translateFlags(NSUInteger flags)
 {
     int mods = 0;
 
-    if (flags & NSShiftKeyMask)
+    if (flags & NSEventModifierFlagShift)
         mods |= GLFW_MOD_SHIFT;
-    if (flags & NSControlKeyMask)
+    if (flags & NSEventModifierFlagControl)
         mods |= GLFW_MOD_CONTROL;
-    if (flags & NSAlternateKeyMask)
+    if (flags & NSEventModifierFlagOption)
         mods |= GLFW_MOD_ALT;
-    if (flags & NSCommandKeyMask)
+    if (flags & NSEventModifierFlagCommand)
         mods |= GLFW_MOD_SUPER;
 
     return mods;
@@ -594,7 +594,7 @@ static int translateKey(unsigned int key)
 {
     int action;
     unsigned int newModifierFlags =
-        [event modifierFlags] & NSDeviceIndependentModifierFlagsMask;
+    [event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask;
 
     if (newModifierFlags > window->ns.modifierFlags)
         action = GLFW_PRESS;
@@ -677,7 +677,7 @@ static int translateKey(unsigned int key)
 // down the command key don't get sent to the key window.
 - (void)sendEvent:(NSEvent *)event
 {
-    if ([event type] == NSKeyUp && ([event modifierFlags] & NSCommandKeyMask))
+    if ([event type] == NSEventTypeKeyUp && ([event modifierFlags] & NSEventModifierFlagCommand))
         [[self keyWindow] sendEvent:event];
     else
         [super sendEvent:event];
@@ -755,7 +755,7 @@ static void createMenuBar(void)
     [[appMenu addItemWithTitle:@"Hide Others"
                        action:@selector(hideOtherApplications:)
                 keyEquivalent:@"h"]
-        setKeyEquivalentModifierMask:NSAlternateKeyMask | NSCommandKeyMask];
+     setKeyEquivalentModifierMask:NSEventModifierFlagOption | NSEventModifierFlagCommand];
     [appMenu addItemWithTitle:@"Show All"
                        action:@selector(unhideAllApplications:)
                 keyEquivalent:@""];
@@ -826,14 +826,14 @@ static GLboolean createWindow(_GLFWwindow* window,
     unsigned int styleMask = 0;
 
     if (wndconfig->monitor || !wndconfig->decorated)
-        styleMask = NSBorderlessWindowMask;
+        styleMask = NSWindowStyleMaskBorderless;
     else
     {
-        styleMask = NSTitledWindowMask | NSClosableWindowMask |
-                    NSMiniaturizableWindowMask;
+        styleMask = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable |
+        NSWindowStyleMaskMiniaturizable;
 
         if (wndconfig->resizable)
-            styleMask |= NSResizableWindowMask;
+            styleMask |= NSWindowStyleMaskResizable;
     }
 
     window->ns.object = [[GLFWWindow alloc]
@@ -1020,7 +1020,7 @@ void _glfwPlatformPollEvents(void)
 {
     for (;;)
     {
-        NSEvent* event = [NSApp nextEventMatchingMask:NSAnyEventMask
+        NSEvent* event = [NSApp nextEventMatchingMask:NSEventMaskAny
                                             untilDate:[NSDate distantPast]
                                                inMode:NSDefaultRunLoopMode
                                               dequeue:YES];
@@ -1039,7 +1039,7 @@ void _glfwPlatformWaitEvents(void)
     // I wanted to pass NO to dequeue:, and rely on PollEvents to
     // dequeue and send.  For reasons not at all clear to me, passing
     // NO to dequeue: causes this method never to return.
-    NSEvent *event = [NSApp nextEventMatchingMask:NSAnyEventMask
+    NSEvent *event = [NSApp nextEventMatchingMask:NSEventMaskAny
                                         untilDate:[NSDate distantFuture]
                                            inMode:NSDefaultRunLoopMode
                                           dequeue:YES];

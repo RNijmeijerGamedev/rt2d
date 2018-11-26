@@ -23,7 +23,7 @@
 //    distribution.
 //
 //========================================================================
-
+#define GL_SILENCE_DEPRECATION 1
 #include "internal.h"
 
 #include <pthread.h>
@@ -254,7 +254,7 @@ void _glfwPlatformSwapInterval(int interval)
     _GLFWwindow* window = _glfwPlatformGetCurrentContext();
 
     GLint sync = interval;
-    [window->nsgl.context setValues:&sync forParameter:NSOpenGLCPSwapInterval];
+    [window->nsgl.context setValues:&sync forParameter:NSOpenGLContextParameterSwapInterval];
 }
 
 int _glfwPlatformExtensionSupported(const char* extension)

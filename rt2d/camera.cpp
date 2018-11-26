@@ -4,7 +4,7 @@
  * - Copyright 2015 Rik Teerling <rik@onandoffables.com>
  *   - Initial commit
  */
-
+#define GL_SILENCE_DEPRECATION 1
 #include <rt2d/rt2dconfig.h>
 #include <rt2d/camera.h>
 

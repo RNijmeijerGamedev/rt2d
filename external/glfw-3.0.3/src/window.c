@@ -25,7 +25,7 @@
 //    distribution.
 //
 //========================================================================
-
+#define GL_SILENCE_DEPRECATION 1
 #include "internal.h"
 
 #include <string.h>
