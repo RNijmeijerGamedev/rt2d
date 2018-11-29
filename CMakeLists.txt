@@ -151,8 +151,10 @@ IF(MAKE_START)
 		start/main.cpp
 		start/myentity.cpp
 		start/myentity.h
-		start/myscene.cpp
-		start/myscene.h
+		start/gamescene.cpp
+		start/gamescene.h
+		start/grid.cpp
+		start/grid.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}

@@ -9,7 +9,8 @@
 #define SCENE08_H
 
 #include <vector>
-#include <rt2d/timer.h>
+#include <vector>
+
 #include "superscene.h"
 #include "basicentity.h"
 

@@ -14,13 +14,13 @@
 #include "myentity.h"
 
 /// @brief The MyScene class is the Scene implementation.
-class MyScene : public Scene
+class GameScene : public Scene
 {
 public:
 	/// @brief Constructor
-	MyScene();
+	GameScene();
 	/// @brief Destructor
-	virtual ~MyScene();
+	virtual ~GameScene();
 
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
