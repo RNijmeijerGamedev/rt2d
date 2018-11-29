@@ -61,7 +61,7 @@ find_package(OpenGL REQUIRED)
 add_subdirectory (external)
 
 include_directories(
-	${CMAKE_SOURCE_DIR}/external/glfw-3.0.3/include/GLFW
+	${CMAKE_SOURCE_DIR}/external/glfw-3.2.1/include/GLFW
 	${CMAKE_SOURCE_DIR}/external/glm-0.9.9.2
 	${CMAKE_SOURCE_DIR}/external/glew-1.9.0/include
 	${CMAKE_SOURCE_DIR}/external
@@ -70,7 +70,7 @@ include_directories(
 )
 
 link_directories(
-	${CMAKE_SOURCE_DIR}/external/glfw-3.0.3/src
+	${CMAKE_SOURCE_DIR}/external/glfw-3.2.1s/src
 	${CMAKE_SOURCE_DIR}/external/glew-1.9.0
 	${CMAKE_SOURCE_DIR}/external
 	${CMAKE_SOURCE_DIR}/rt2d
@@ -79,7 +79,7 @@ link_directories(
 set(ALL_GRAPHICS_LIBS
 	${OPENGL_LIBRARY}
 	rt2d
-	GLFW_303
+	glfw
 	GLEW_190
 )
 
