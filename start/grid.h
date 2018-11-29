@@ -10,6 +10,28 @@
 
 #include <vector>
 #include <vector>
+#include "myentity.h"
+#include "gamescene.h"
 
+struct Cell {
+    MyEntity* entity;
+    Point_t<int> position;
+};
+
+class Grid: public Entity {
+
+public:
+    Grid();
+    virtual ~Grid();
+private:
+    MyEntity* grid;
+    std::vector<Cell*> cells;
+    
+    int gridwidth;
+    int gridheight;
+    int cellwidth;
+    int cellheight;
+    int border;
+};
 
 #endif /* grid_hpp */
