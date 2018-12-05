@@ -6,7 +6,6 @@
 
 #include <fstream>
 #include <sstream>
-
 #include "gamescene.h"
 #include "grid.h"
 

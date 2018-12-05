@@ -1,5 +1,5 @@
 //
-//  grid.hpp
+//  grid.h
 //  start
 //
 //  Created by Ruben Nijmeijer on 29/11/2018.
@@ -8,7 +8,6 @@
 #ifndef grid_H
 #define grid_H
 
-#include <vector>
 #include <vector>
 #include "myentity.h"
 #include "gamescene.h"
