@@ -7,7 +7,8 @@
 
 #include "grid.h"
 
-Grid::Grid() : Entity() {
+Grid::Grid(){
+    cells = std::vector<Cell*>();
     // grid size
     gridwidth = 24;
     gridheight = 16;
@@ -37,6 +38,7 @@ Grid::Grid() : Entity() {
     }
 }
 
+
 Grid::~Grid()
 {
     int s = cells.size();
@@ -47,6 +49,8 @@ Grid::~Grid()
         cells[i] = nullptr;
     }
     cells.clear();
+}
+
+void Grid::update(float deltatime){
     
-    //delete grid;
 }

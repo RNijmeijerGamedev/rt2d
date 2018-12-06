@@ -102,7 +102,7 @@ void Scene08::update(float deltaTime)
 		int top = pos.y - halfheight;
 		int bottom = pos.y + halfheight;
 
-		if ( mousex > left && mousex < right && mousey > top && mousey < bottom ) {
+		/*if ( mousex > left && mousex < right && mousey > top && mousey < bottom ) {
 			c->entity->sprite()->color.a = 127;
 			if (input()->getMouseDown( 0 )) {
 				c->entity->sprite()->color = RGBAColor(192, 192, 192, 255);
@@ -115,7 +115,7 @@ void Scene08::update(float deltaTime)
 			}
 		} else {
 			c->entity->sprite()->color.a = 255;
-		}
+		}*/
 	}
 /*
 	// ###############################################################

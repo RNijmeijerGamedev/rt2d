@@ -7,10 +7,11 @@
 #include <fstream>
 #include <sstream>
 #include "gamescene.h"
-#include "grid.h"
 
-GameScene::GameScene() : Scene()
+GameScene::GameScene()
 {
+    //grid = new Grid();
+    //this-> grid;
 	// start the timer.
 	t.start();
 

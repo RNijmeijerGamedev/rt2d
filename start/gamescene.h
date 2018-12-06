@@ -10,7 +10,6 @@
 #define MYSCENE_H
 
 #include <rt2d/scene.h>
-
 #include "myentity.h"
 #include "grid.h"
 
@@ -29,7 +28,7 @@ public:
 	virtual void update(float deltaTime);
 
 private:
-
+    Grid* grid = nullptr;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
 };

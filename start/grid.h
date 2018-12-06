@@ -10,18 +10,18 @@
 
 #include <vector>
 #include "myentity.h"
-#include "gamescene.h"
 
 struct Cell {
     MyEntity* entity;
     Point_t<int> position;
 };
 
-class Grid: public Entity {
+class Grid: public MyEntity {
 
 public:
     Grid();
     virtual ~Grid();
+    void update(float deltatime);
 private:
     MyEntity* grid;
     std::vector<Cell*> cells;
