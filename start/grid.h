@@ -16,14 +16,14 @@ struct Cell {
     Point_t<int> position;
 };
 
-class Grid: public MyEntity {
+class Grid: public Entity {
 
 public:
     Grid();
     virtual ~Grid();
     void update(float deltatime);
 private:
-    MyEntity* grid;
+    //MyEntity* grid;
     std::vector<Cell*> cells;
     
     int gridwidth;

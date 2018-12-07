@@ -7,7 +7,7 @@
 
 #include "grid.h"
 
-Grid::Grid(){
+Grid::Grid() : Entity(){
     cells = std::vector<Cell*>();
     // grid size
     gridwidth = 24;
@@ -22,7 +22,7 @@ Grid::Grid(){
             cell->position.y = y;
             
             cell->entity = new MyEntity();
-            cell->entity->addSprite(AUTOGENWHITE);
+            cell->entity->addSprite("assets/defaultgray.tga");
             cell->entity->sprite()->size.x = cellwidth;
             cell->entity->sprite()->size.y = cellheight;
             cell->entity->sprite()->color = GRAY;
@@ -31,7 +31,7 @@ Grid::Grid(){
             cell->entity->position.y = y*(cellheight+border);
             
             cells.push_back(cell);
-            grid->addChild(cell->entity);
+            this->addChild(cell->entity);
             //layers[0]->addChild(grid);
 
         }

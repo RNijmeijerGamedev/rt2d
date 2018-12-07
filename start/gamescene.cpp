@@ -10,9 +10,16 @@
 
 GameScene::GameScene()
 {
-    //grid = new Grid();
-    //this-> grid;
-	// start the timer.
+    
+    /// this doesnt work yet
+    grid = new Grid();
+    this->addChild(grid);
+    
+    MyEntity *e = new MyEntity();
+    this->addChild(e);
+	
+    // start the timer.
+    //
 	t.start();
 
 }
