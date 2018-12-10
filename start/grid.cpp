@@ -10,8 +10,8 @@
 Grid::Grid() : Entity(){
     cells = std::vector<Cell*>();
     // grid size
-    gridwidth = 24;
-    gridheight = 16;
+    gridwidth = 128;
+    gridheight = 128;
     cellwidth = 64;
     cellheight = 64;
     // create cells
@@ -22,7 +22,7 @@ Grid::Grid() : Entity(){
             cell->position.y = y;
             
             cell->entity = new MyEntity();
-            cell->entity->addSprite("assets/defaultgray.tga");
+            cell->entity->addSprite("assets/default.tga");
             cell->entity->sprite()->size.x = cellwidth;
             cell->entity->sprite()->size.y = cellheight;
             cell->entity->sprite()->color = GRAY;
