@@ -16,6 +16,8 @@
 #include <rt2d/core.h>
 
 #include "gamescene.h"
+#include "scenemanager.h"
+
 
 /// @brief main entry point
 int main( void )

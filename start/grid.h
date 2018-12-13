@@ -23,14 +23,12 @@ public:
     virtual ~Grid();
     void update(float deltatime);
 private:
-    //MyEntity* grid;
-    std::vector<Cell*> cells;
     
     int gridwidth;
     int gridheight;
     int cellwidth;
     int cellheight;
-    int border;
+    //int border;
 };
 
 #endif /* grid_hpp */

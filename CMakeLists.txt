@@ -155,6 +155,8 @@ IF(MAKE_START)
 		start/gamescene.h
 		start/grid.cpp
 		start/grid.h
+        start/scenemanager.cpp
+        start/scenemanager.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}

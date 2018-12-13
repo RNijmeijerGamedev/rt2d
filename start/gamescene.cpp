@@ -7,6 +7,8 @@
 #include <fstream>
 #include <sstream>
 #include "gamescene.h"
+#include "scenemanager.h"
+
 
 GameScene::GameScene()
 {
