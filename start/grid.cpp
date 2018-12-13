@@ -15,27 +15,7 @@ Grid::Grid() : Entity(){
     cellwidth = 64;
     cellheight = 64;
     // create cells
-    for (int x=0; x<gridwidth; x++) {
-        for (int y=0; y<gridheight; y++) {
-            Cell* cell = new Cell();
-            cell->position.x = x;
-            cell->position.y = y;
-            
-            cell->entity = new MyEntity();
-            cell->entity->addSprite("assets/default.tga");
-            cell->entity->sprite()->size.x = cellwidth;
-            cell->entity->sprite()->size.y = cellheight;
-            cell->entity->sprite()->color = GRAY;
-            
-            cell->entity->position.x = x*(cellwidth+border);
-            cell->entity->position.y = y*(cellheight+border);
-            
-            cells.push_back(cell);
-            this->addChild(cell->entity);
-            //layers[0]->addChild(grid);
-
-        }
-    }
+    this->addGrid("assets/default.tga", 8, 8, gridwidth, gridheight, cellwidth, cellheight);
 }
 
 
