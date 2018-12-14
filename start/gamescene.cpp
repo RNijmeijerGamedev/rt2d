@@ -14,6 +14,7 @@ GameScene::GameScene() : SceneManager()
 {
     
     /// this doesnt work yet
+    //// but now it does
     grid = new Grid();
     this->addChild(grid);
     
@@ -41,7 +42,8 @@ void GameScene::update(float deltaTime)
 		this->stop();
         
 	}
-   // SceneManager::update(deltaTime);
-   // SceneManager::moveCamera(deltaTime);
+    SceneManager::update(deltaTime);
+    SceneManager::moveCamera(deltaTime);
+    
 
 }

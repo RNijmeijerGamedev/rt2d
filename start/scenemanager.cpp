@@ -74,58 +74,6 @@ void SceneManager::update(float deltaTime)
     if (input()->getKeyUp(KeyCode::Escape)) {
         this->stop();
     }
-    
-    // ###############################################################
-    // '[' and ']' switch scenes
-    // ###############################################################
-    if (input()->getKeyUp(KeyCode::LeftBracket)) {
-        activescene--;
-    }
-    if (input()->getKeyUp(KeyCode::RightBracket)) {
-        activescene++;
-    }
-    
-    // ###############################################################
-    // Mouse buttons (GLFW_MOUSE_BUTTON_LAST = 8 buttons: 0-7)
-    // ###############################################################
-    for (int i = 0; i < GLFW_MOUSE_BUTTON_LAST; i++) {
-        if (input()->getMouseUp( i )) {
-            //std::cout << "mouse up: " << i << std::endl;
-        }
-        if (input()->getMouseDown( i )) {
-            //std::cout << "mouse down: " << i << std::endl;
-            player->mouseclicks++;
-        }
-    }
-    std::stringstream clicktxt;
-    clicktxt << "click " << player->mouseclicks;
-    text[10]->message(clicktxt.str());
-    
-    // ###############################################################
-    // logo and text follow camera
-    // ###############################################################
-    Point2 cam_pos = Point2(camera()->position.x, camera()->position.y);
-    
-    Point2 logo_pos = Point2(cam_pos.x, cam_pos.y - 50 + SHEIGHT/2);
-    logo->position = logo_pos;
-    
-    unsigned int s = text.size();
-    for (unsigned int i = 0; i < s; i++) {
-        text[i]->position = Point2(cam_pos.x + 50 - SWIDTH/2, cam_pos.y + 50 + (30*i) - SHEIGHT/2);
-    }
-    
-    // ###############################################################
-    // show FPS
-    // ###############################################################
-    static int framecounter = 0;
-    if (fpstimer.seconds() > 1.0f) {
-        std::stringstream fpstxt;
-        fpstxt <<  "FPS: " << framecounter;
-        text[1]->message(fpstxt.str());
-        framecounter = 0;
-        fpstimer.start();
-    }
-    framecounter++;
 }
 
 void SceneManager::moveCamera(float deltaTime)
