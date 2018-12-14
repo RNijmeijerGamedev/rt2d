@@ -10,6 +10,8 @@
 
 #include <vector>
 #include "myentity.h"
+#include "scenemanager.h"
+
 
 struct Cell {
     MyEntity* entity;

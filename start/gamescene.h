@@ -12,9 +12,10 @@
 #include <rt2d/scene.h>
 #include "myentity.h"
 #include "grid.h"
+#include "scenemanager.h"
 
 /// @brief The MyScene class is the Scene implementation.
-class GameScene : public Scene
+class GameScene : public SceneManager
 {
 public:
 	/// @brief Constructor

@@ -10,7 +10,7 @@
 #include "scenemanager.h"
 
 
-GameScene::GameScene()
+GameScene::GameScene() : SceneManager()
 {
     
     /// this doesnt work yet
@@ -39,6 +39,9 @@ void GameScene::update(float deltaTime)
 	// ###############################################################
 	if (input()->getKeyUp(KeyCode::Escape)) {
 		this->stop();
+        
 	}
+   // SceneManager::update(deltaTime);
+   // SceneManager::moveCamera(deltaTime);
 
 }

@@ -5,8 +5,8 @@
 //  Created by Ruben Nijmeijer on 13/12/2018.
 //
 
-#ifndef scenemanager_hpp
-#define scenemanager_hpp
+#ifndef scenemanager_h
+#define scenemanager_h
 
 #include <vector>
 #include <rt2d/scene.h>
@@ -18,11 +18,11 @@ struct Player
     int mouseclicks = 0;
 };
 
-class SuperScene: public Scene
+class SceneManager: public Scene
 {
 public:
-    SuperScene();
-    virtual ~SuperScene();
+    SceneManager();
+    virtual ~SceneManager();
     
     // must be explicitly called from subclass
     virtual void update(float deltaTime);
@@ -42,4 +42,4 @@ private:
     Timer fpstimer;
 };
 
-#endif /* scenemanager_hpp */
+#endif /* scenemanager_h */

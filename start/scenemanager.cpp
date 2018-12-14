@@ -7,9 +7,9 @@
 
 #include "scenemanager.h"
 
-int SuperScene::activescene = 0;
+int SceneManager::activescene = 0;
 
-SuperScene::SuperScene() : Scene()
+SceneManager::SceneManager() : Scene()
 {
     fpstimer.start();
     
@@ -42,7 +42,7 @@ SuperScene::SuperScene() : Scene()
 }
 
 
-SuperScene::~SuperScene()
+SceneManager::~SceneManager()
 {
     layers[top_layer]->removeChild(logo);
     
@@ -66,7 +66,7 @@ SuperScene::~SuperScene()
 }
 
 // must be explicitly called from subclass
-void SuperScene::update(float deltaTime)
+void SceneManager::update(float deltaTime)
 {
     // ###############################################################
     // Escape key stops the Scene
@@ -128,7 +128,7 @@ void SuperScene::update(float deltaTime)
     framecounter++;
 }
 
-void SuperScene::moveCamera(float deltaTime)
+void SceneManager::moveCamera(float deltaTime)
 {
     // ###############################################################
     // Move Camera (Arrow up, down, left, right)
