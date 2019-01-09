@@ -20,6 +20,7 @@ SceneManager::SceneManager() : Scene()
         MyEntity* layer = new MyEntity();
         layers.push_back(layer);
         this->addChild(layer);
+        
     }
     
     for (unsigned int i = 0; i < 16; i++) {
@@ -105,3 +106,4 @@ void SceneManager::moveCamera(float deltaTime)
     direction *= deltaTime * speed;
     camera()->position += direction;
 }
+

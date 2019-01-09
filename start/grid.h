@@ -24,7 +24,9 @@ public:
     Grid();
     virtual ~Grid();
     void update(float deltatime);
+    void setCamera(Camera* c) {this->cam = c;};
 private:
+    Camera* cam;
     
     int gridwidth;
     int gridheight;

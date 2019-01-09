@@ -17,7 +17,7 @@ GameScene::GameScene() : SceneManager()
     //// but now it does
     grid = new Grid();
     this->addChild(grid);
-    
+    grid->setCamera(camera());
     MyEntity *e = new MyEntity();
     this->addChild(e);
 	
@@ -44,6 +44,8 @@ void GameScene::update(float deltaTime)
 	}
     SceneManager::update(deltaTime);
     SceneManager::moveCamera(deltaTime);
+
+    
     
 
 }

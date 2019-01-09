@@ -6,7 +6,6 @@
 //
 
 #include "grid.h"
-#include "scenemanager.h"
 
 Grid::Grid() : Entity(){
     // grid size
@@ -34,8 +33,7 @@ Grid::~Grid()
 
 void Grid::update(float deltatime){
     
-/*    int mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
-    int mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+
     
     std::vector<Sprite*> spritebatch = this->spritebatch();
     int counter = 0;
@@ -50,6 +48,9 @@ void Grid::update(float deltatime){
             int top = pos.y - halfheight;
             int bottom = pos.y + halfheight;
             
+            int mousex = input()->getMouseX() + cam->position.x - SWIDTH/2;
+            int mousey = input()->getMouseY() + cam->position.y - SHEIGHT/2;
+            
             if ( mousex > left && mousex < right && mousey > top && mousey < bottom ) {
                 spritebatch[counter]->color.a = 192;
                 if (input()->getMouseDown( 0 )) {
@@ -61,6 +62,5 @@ void Grid::update(float deltatime){
             counter++;
         }
     }
- */
-
+     
 }
