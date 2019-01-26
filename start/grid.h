@@ -11,6 +11,7 @@
 #include <vector>
 #include "myentity.h"
 #include "scenemanager.h"
+#include "unit.h"
 
 
 struct Cell {
@@ -27,6 +28,7 @@ public:
     void setCamera(Camera* c) {this->cam = c;};
 private:
     Camera* cam;
+    Unit* unit = nullptr;
     
     int gridwidth;
     int gridheight;
@@ -35,4 +37,4 @@ private:
     //int border;
 };
 
-#endif /* grid_hpp */
+#endif /* grid_h */

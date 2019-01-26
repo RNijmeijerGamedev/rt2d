@@ -20,7 +20,9 @@ GameScene::GameScene() : SceneManager()
     grid->setCamera(camera());
     MyEntity *e = new MyEntity();
     this->addChild(e);
+    
 	
+    //layers[0]->addChild(grid);
     // start the timer.
     //
 	t.start();

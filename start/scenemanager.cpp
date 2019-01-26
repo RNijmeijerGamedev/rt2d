@@ -32,14 +32,14 @@ SceneManager::SceneManager() : Scene()
     }
     
     // Create a logo entity on the top layer
-    logo = new MyEntity();
-    logo->position = Point2(SWIDTH/2, SHEIGHT - 50);
-    logo->addLine("assets/rt2d.line");
-    layers[top_layer]->addChild(logo);
+    //logo = new MyEntity();
+    //logo->position = Point2(SWIDTH/2, SHEIGHT - 50);
+    //logo->addLine("assets/rt2d.line");
+    //layers[top_layer]->addChild(logo);
     
-    text[1]->message("");
-    text[2]->message("<[/]> previous/next scene");
-    text[3]->message("<ESC> quit demo");
+    //text[1]->message("/");
+    //text[2]->message("<[/]> previous/next scene");
+    //text[3]->message("<ESC> quit demo");
 }
 
 
@@ -63,7 +63,7 @@ SceneManager::~SceneManager()
     }
     text.clear();
     
-    delete logo;
+    //delete logo;
 }
 
 // must be explicitly called from subclass
