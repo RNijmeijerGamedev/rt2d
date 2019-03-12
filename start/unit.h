@@ -11,6 +11,8 @@
 #include "myentity.h"
 #include <stdio.h>
 #include <vector>
+#include "scenemanager.h"
+#include <rt2d/scene.h>
 
 class Unit: public Entity {
     
@@ -18,7 +20,10 @@ public:
     Unit();
     virtual ~Unit();
     void update(float deltatime);
-private:
+    void MoveToLocation(Vector2);
+    void IsSelected();
     
+    
+private:
 };
 #endif /* unit_h */

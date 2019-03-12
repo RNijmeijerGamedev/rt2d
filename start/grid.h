@@ -28,7 +28,7 @@ public:
     void setCamera(Camera* c) {this->cam = c;};
 private:
     Camera* cam;
-    Unit* unit = nullptr;
+
     
     int gridwidth;
     int gridheight;

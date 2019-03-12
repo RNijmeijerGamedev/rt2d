@@ -10,9 +10,12 @@
 #define MYSCENE_H
 
 #include <rt2d/scene.h>
+#include <input.h>
 #include "myentity.h"
 #include "grid.h"
 #include "scenemanager.h"
+#include "selection.h"
+#include "vectorx.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class GameScene : public SceneManager
@@ -22,16 +25,32 @@ public:
 	GameScene();
 	/// @brief Destructor
 	virtual ~GameScene();
-
+    
+    
 	/// @brief update is automatically called every frame
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-
+    void compareXY(Vector2 a, Vector2 b);
+    void measureOfzo();
+    
 private:
     Grid* grid = nullptr;
+    Unit* unit = nullptr;
+    Selection* selection = nullptr;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
+    int mouseX;
+    int mouseY;
+    Vector2 location1;
+    Vector2 location2;
+    bool selectionStarted;
+    int biggestX;
+    int biggestY;
+    int smallestX;
+    int smallestY;
+    
+    
 };
 
 #endif /* SCENE00_H */

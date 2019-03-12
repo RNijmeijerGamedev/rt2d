@@ -11,7 +11,7 @@ Unit::Unit() : Entity() {
     
     
     
-    //sprite
+    //sprite renderer
     this->addSprite("assets/boid.tga");
 }
 
@@ -21,5 +21,15 @@ Unit::~Unit() {
 }
 
 void Unit::update(float deltatime) {
+    //if (this->input()->getMouseDown( 0 )) {
+        //this->color = RED;
+    }
+
+
+void IsSelected(){
+    //std::cout << "selected";
+}
+
+void MoveToLocation(){
     
 }
