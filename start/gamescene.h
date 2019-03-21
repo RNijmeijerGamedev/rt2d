@@ -16,6 +16,7 @@
 #include "scenemanager.h"
 #include "selection.h"
 #include "vectorx.h"
+#include "collision.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class GameScene : public SceneManager
