@@ -15,9 +15,9 @@ GameScene::GameScene() : SceneManager()
     
     /// this doesnt work yet
     //// but now it does
-   // grid = new Grid();
-   // this->addChild(grid);
-   // grid->setCamera(camera());
+    grid = new Grid();
+    this->addChild(grid);
+    grid->setCamera(camera());
     MyEntity *e = new MyEntity();
     this->addChild(e);
     unit = new Unit();
@@ -72,7 +72,7 @@ void GameScene::update(float deltaTime)
     }
     
     compareXY(location1, location2);
-    measureOfzo();
+    measureSelection();
 }
 void GameScene::compareXY(Vector2 a, Vector2 b){
     if(a.x > b.x){
@@ -95,9 +95,9 @@ void GameScene::compareXY(Vector2 a, Vector2 b){
     
 }
 
-void GameScene::measureOfzo(){
-    if(unit->position.x > smallestX && unit->position.x < biggestX &&
-       unit->position.y > smallestX && unit->position.y < biggestY){
+void GameScene::measureSelection(){
+    if(unit->position.x < smallestX && unit->position.x > biggestX &&
+       unit->position.y < smallestX && unit->position.y > biggestY){
         std::cout << "its in bois" << std::endl ;
     }
 }

@@ -32,7 +32,7 @@ public:
 	/// @return void
 	virtual void update(float deltaTime);
     void compareXY(Vector2 a, Vector2 b);
-    void measureOfzo();
+    void measureSelection();
     
 private:
     Grid* grid = nullptr;
