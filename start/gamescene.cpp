@@ -24,11 +24,11 @@ GameScene::GameScene() : SceneManager()
     unit->position = Vector2(1,1);
     
     this->addChild(unit);
-    selectionStarted = false;
-    biggestX = 0;
-    biggestY = 0;
-    smallestX = 0;
-    smallestY = 0;
+    //selectionStarted = false;
+    //biggestX = 0;
+    //biggestY = 0;
+    //smallestX = 0;
+    //smallestY = 0;
 	
     //layers[0]->addChild(grid);
     // start the timer.
@@ -55,7 +55,7 @@ void GameScene::update(float deltaTime)
     SceneManager::update(deltaTime);
     SceneManager::moveCamera(deltaTime);
     
-    if (input()->getMouseDown( 0 ) && !selectionStarted) {
+    /*if (input()->getMouseDown( 0 ) && !selectionStarted) {
         mouseX = input()->getMouseX();
         mouseY = input()->getMouseY();
         location1 = Vector2(mouseX, mouseY);
@@ -99,5 +99,5 @@ void GameScene::measureSelection(){
     if(unit->position.x < smallestX && unit->position.x > biggestX &&
        unit->position.y < smallestX && unit->position.y > biggestY){
         std::cout << "its in bois" << std::endl ;
-    }
+    }*/
 }
