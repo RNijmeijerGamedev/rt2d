@@ -26,10 +26,10 @@ void Unit::update(float deltatime) {
     }
 
 
-void IsSelected(){
-    //std::cout << "selected";
+void Unit::IsSelected(){
+    std::cout << "selected";
 }
 
-void MoveToLocation(){
+void Unit::MoveToLocation(Vector2 loc){
     
 }

@@ -23,7 +23,7 @@ GameScene::GameScene() : SceneManager()
     unit = new Unit();
     unit->position = Vector2(1,1);
     
-    this->addChild(unit);
+    grid->addChild(unit);
     //selectionStarted = false;
     //biggestX = 0;
     //biggestY = 0;
@@ -55,23 +55,25 @@ void GameScene::update(float deltaTime)
     SceneManager::update(deltaTime);
     SceneManager::moveCamera(deltaTime);
     
-    /*if (input()->getMouseDown( 0 ) && !selectionStarted) {
-        mouseX = input()->getMouseX();
-        mouseY = input()->getMouseY();
-        location1 = Vector2(mouseX, mouseY);
+   
+    if(input()->getMouseDown( 0 ) && !selectionStarted) {
+        mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
+        mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+        location1 = Vector2(mousex, mousey);
         selectionStarted = true;
         std::cout<< location1 << std::endl;
         std::cout<< selectionStarted << std::endl;
     } else if(input()->getMouseUp( 0 ) && selectionStarted){
-        mouseX = input()->getMouseX();
-        mouseY = input()->getMouseY();
-        location2 = Vector2(mouseX, mouseY);
+        mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
+        mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+        location2 = Vector2(mousex, mousey);
         selectionStarted = false;
         std::cout<< location2 << std::endl;
         std::cout<< selectionStarted << std::endl;
     }
     
-    compareXY(location1, location2);
+    
+    /*compareXY(location1, location2);
     measureSelection();
 }
 void GameScene::compareXY(Vector2 a, Vector2 b){
@@ -98,6 +100,5 @@ void GameScene::compareXY(Vector2 a, Vector2 b){
 void GameScene::measureSelection(){
     if(unit->position.x < smallestX && unit->position.x > biggestX &&
        unit->position.y < smallestX && unit->position.y > biggestY){
-        std::cout << "its in bois" << std::endl ;
     }*/
 }

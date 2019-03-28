@@ -41,8 +41,8 @@ private:
     Selection* selection = nullptr;
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
-    int mouseX;
-    int mouseY;
+    int mousex;
+    int mousey;
     Vector2 location1;
     Vector2 location2;
     bool selectionStarted;
