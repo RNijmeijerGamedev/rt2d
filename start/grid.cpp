@@ -14,7 +14,7 @@ Grid::Grid() : Entity(){
     cellwidth = 64;
     cellheight = 64;
     // create cells
-    this->addGrid("assets/default.tga", 8, 8, gridwidth, gridheight, cellwidth, cellheight);
+    this->addGrid("assets/ground.tga", 8, 8, gridwidth, gridheight, cellwidth, cellheight);
 
     int counter = 0;
     for (int x=0; x<gridwidth; x++) {

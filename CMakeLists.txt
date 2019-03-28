@@ -70,7 +70,7 @@ include_directories(
 )
 
 link_directories(
-	${CMAKE_SOURCE_DIR}/external/glfw-3.2.1s/src
+	${CMAKE_SOURCE_DIR}/external/glfw-3.2.1/src
 	${CMAKE_SOURCE_DIR}/external/glew-1.9.0
 	${CMAKE_SOURCE_DIR}/external
 	${CMAKE_SOURCE_DIR}/rt2d
@@ -155,8 +155,12 @@ IF(MAKE_START)
 		start/gamescene.h
 		start/grid.cpp
 		start/grid.h
-        start/scenemanager.cpp
-        start/scenemanager.h
+    start/scenemanager.cpp
+    start/scenemanager.h
+    start/unit.cpp
+    start/unit.h
+    start/collision.cpp
+    start/collision.h
 	)
 	target_link_libraries(start
 		${ALL_GRAPHICS_LIBS}
