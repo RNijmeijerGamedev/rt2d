@@ -32,7 +32,7 @@ public:
 	/// @param deltaTime the elapsed time in seconds
 	/// @return void
 	virtual void update(float deltaTime);
-    void compareXY(Vector2 a, Vector2 b);
+    void compareXY(Vector2 a, Vector2 b, Vector2 unitpos);
     void measureSelection();
     
 private:

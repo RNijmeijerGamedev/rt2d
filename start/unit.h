@@ -22,6 +22,7 @@ public:
     void update(float deltatime);
     void MoveToLocation(Vector2);
     void IsSelected();
+    bool selected;
     
     
 private:

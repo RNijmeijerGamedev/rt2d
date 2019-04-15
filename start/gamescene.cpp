@@ -22,13 +22,16 @@ GameScene::GameScene() : SceneManager()
     this->addChild(e);
     unit = new Unit();
     unit->position = Vector2(1,1);
+    unit->sprite()->color = RED;
     
     grid->addChild(unit);
-    //selectionStarted = false;
-    //biggestX = 0;
-    //biggestY = 0;
-    //smallestX = 0;
-    //smallestY = 0;
+    selectionStarted = false;
+    // Smallest = Begin
+    // Biggest = end
+    biggestX = 0;
+    biggestY = 0;
+    smallestX = 0;
+    smallestY = 0;
 	
     //layers[0]->addChild(grid);
     // start the timer.
@@ -59,6 +62,10 @@ void GameScene::update(float deltaTime)
     if(input()->getMouseDown( 0 ) && !selectionStarted) {
         mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
         mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+        std::cout << "Mouse X:" << std::endl;
+        std::cout << mousex << std::endl;
+        std::cout << "Mouse Y:" << std::endl;
+        std::cout << mousey << std::endl;
         location1 = Vector2(mousex, mousey);
         selectionStarted = true;
         std::cout<< location1 << std::endl;
@@ -71,14 +78,15 @@ void GameScene::update(float deltaTime)
         std::cout<< location2 << std::endl;
         std::cout<< selectionStarted << std::endl;
     }
-    
-    
-    /*compareXY(location1, location2);
+    compareXY(location1, location2, unit->position);
     measureSelection();
 }
-void GameScene::compareXY(Vector2 a, Vector2 b){
+
+// Je checkt tussen twee muis posities
+void GameScene::compareXY(Vector2 a, Vector2 b, Vector2 unitpos){
     if(a.x > b.x){
         biggestX = a.x;
+        std::cout << a.x << std::endl;
         smallestX = b.x;
     }
     if(a.y > b.y){
@@ -93,12 +101,11 @@ void GameScene::compareXY(Vector2 a, Vector2 b){
         smallestY = a.y;
         biggestY = b.y;
     }
-    
-    
 }
 
 void GameScene::measureSelection(){
-    if(unit->position.x < smallestX && unit->position.x > biggestX &&
-       unit->position.y < smallestX && unit->position.y > biggestY){
-    }*/
+    if(unit->position.x > smallestX && unit->position.x < biggestX &&
+       unit->position.y > smallestX && unit->position.y < biggestY){
+        unit->IsSelected();
+    }
 }
