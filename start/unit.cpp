@@ -27,7 +27,7 @@ void Unit::update(float deltatime) {
         
         Vector2 dir = (destination - position);
         dir.normalize();
-        position +=(dir * 10) *deltatime;
+        position +=(dir * 100) *deltatime;
     }
 }
 
