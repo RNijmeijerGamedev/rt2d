@@ -14,9 +14,10 @@
 #include "myentity.h"
 #include "grid.h"
 #include "scenemanager.h"
-#include "selection.h"
 #include "vectorx.h"
 #include "collision.h"
+#include "unit.h"
+#include "selection.h"
 
 /// @brief The MyScene class is the Scene implementation.
 class GameScene : public SceneManager
@@ -39,6 +40,7 @@ private:
     Grid* grid = nullptr;
     Unit* unit = nullptr;
     Selection* selection = nullptr;
+
 	/// @brief a Timer to rotate the color every n seconds
 	Timer t;
     int mousex;
@@ -50,7 +52,10 @@ private:
     int biggestY;
     int smallestX;
     int smallestY;
-    
+    int destinationx;
+    int destinationy;
+    Vector2 destination;
+    bool destinationSet;
     
 };
 

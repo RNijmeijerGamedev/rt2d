@@ -13,6 +13,9 @@
 #include <vector>
 #include "scenemanager.h"
 #include <rt2d/scene.h>
+#include <input.h>
+#include "grid.h"
+//#include "gamescene.h"
 
 class Unit: public Entity {
     
@@ -22,7 +25,10 @@ public:
     void update(float deltatime);
     void MoveToLocation(Vector2);
     void IsSelected();
+    void IsUnSelected();
     bool selected;
+    bool moving;
+    Vector2 destination;
     
     
 private:

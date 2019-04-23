@@ -21,11 +21,12 @@ GameScene::GameScene() : SceneManager()
     MyEntity *e = new MyEntity();
     this->addChild(e);
     unit = new Unit();
-    unit->position = Vector2(1,1);
+    unit->position = Vector2(25,25);
     unit->sprite()->color = RED;
     
     grid->addChild(unit);
     selectionStarted = false;
+    destinationSet = false;
     // Smallest = Begin
     // Biggest = end
     biggestX = 0;
@@ -57,11 +58,12 @@ void GameScene::update(float deltaTime)
 	}
     SceneManager::update(deltaTime);
     SceneManager::moveCamera(deltaTime);
-    
    
     if(input()->getMouseDown( 0 ) && !selectionStarted) {
         mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
         mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+        //mousex = input()->getMouseX();
+        //mousey = input()->getMouseY();
         std::cout << "Mouse X:" << std::endl;
         std::cout << mousex << std::endl;
         std::cout << "Mouse Y:" << std::endl;
@@ -70,21 +72,38 @@ void GameScene::update(float deltaTime)
         selectionStarted = true;
         std::cout<< location1 << std::endl;
         std::cout<< selectionStarted << std::endl;
+        if (selectionStarted == true ){
+            unit->IsUnSelected();
+        }
     } else if(input()->getMouseUp( 0 ) && selectionStarted){
         mousex = input()->getMouseX() + camera()->position.x - SWIDTH/2;
         mousey = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+        //mousex = input()->getMouseX();
+        //mousey = input()->getMouseY();
         location2 = Vector2(mousex, mousey);
         selectionStarted = false;
         std::cout<< location2 << std::endl;
         std::cout<< selectionStarted << std::endl;
+        compareXY(location1, location2, unit->position);
+        measureSelection();
     }
-    compareXY(location1, location2, unit->position);
-    measureSelection();
+    
+    if(unit->selected == true){
+        if (input()->getMouseDown(1)){
+            destinationx = input()->getMouseX() + camera()->position.x - SWIDTH/2;
+            destinationy = input()->getMouseY() + camera()->position.y - SHEIGHT/2;
+            unit->destination = Vector2(destinationx, destinationy);
+            std::cout<< destination << std::endl;
+            unit->moving = true;
+        }
+    }
+    
 }
 
 // Je checkt tussen twee muis posities
 void GameScene::compareXY(Vector2 a, Vector2 b, Vector2 unitpos){
     if(a.x > b.x){
+        //unitpos;
         biggestX = a.x;
         std::cout << a.x << std::endl;
         smallestX = b.x;
@@ -107,5 +126,10 @@ void GameScene::measureSelection(){
     if(unit->position.x > smallestX && unit->position.x < biggestX &&
        unit->position.y > smallestX && unit->position.y < biggestY){
         unit->IsSelected();
+        std::cout << unit->position << std::endl;
+        std::cout << biggestX << "  " << biggestY << std::endl;
+        std::cout << smallestX << "  "<<smallestY << std::endl;
+        //std::cout << unit->IsSelected() << std::endl;
+        
     }
 }
